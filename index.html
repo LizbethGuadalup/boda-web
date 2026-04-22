@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Boda Lizbeth & Jonathan</title>
+
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #6f8f76;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .versiculo {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .nombres {
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .mensaje {
+      margin-bottom: 30px;
+    }
+
+    .evento {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    #countdown {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background: #6f8f76;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <p class="versiculo">
+      Así que ya no son dos, sino uno solo. <br>
+      Por tanto, lo que Dios ha unido, que no lo separe el hombre. <br>
+      <strong>Mateo 19:6</strong>
+    </p>
+
+    <h1 class="nombres">
+      LIZBETH GUADALUPE <br>&<br> JONATHAN MARTÍN
+    </h1>
+
+    <p class="mensaje">
+      En compañía de nuestras familias <br><br>
+      Tenemos el gusto de invitarlos a nuestro enlace matrimonial.
+    </p>
+
+    <div class="evento">
+      <div>
+        <p>Sábado</p>
+        <p>05 Diciembre 2026</p>
+        <p>3:00 p.m.</p>
+      </div>
+
+      <div>
+        <p>Mi Rinconcito</p>
+      </div>
+    </div>
+
+    <div id="countdown"></div>
+
+    <h3>Confirma tu asistencia</h3>
+
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <br>
+    <button onclick="confirmar()">Confirmar</button>
+
+  </div>
+
+  <script>
+    // CONTADOR
+    const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
+
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const diff = fecha - ahora;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      document.getElementById("countdown").innerHTML =
+        "Faltan " + dias + " días 💍";
+    }, 1000);
+
+    // RSVP (temporal)
+    function confirmar() {
+      const nombre = document.getElementById("nombre").value;
+      alert("Gracias por confirmar, " + nombre + " 💌");
+    }
+  </script>
+
+</body>
+</html>
