@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Boda Lizbeth & Jonathan</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
   <style>
-
     @font-face {
       font-family: 'NewYork';
       src: url('fonts/NewYork.otf') format('opentype');
@@ -17,14 +15,12 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      padding: 20px 0;
       background: #6f8f76;
-      font-family: 'Cormorant Garamond', 'Palatino Linotype', serif;
-      -webkit-font-smoothing: antialiased;
-      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      color: #333;
     }
 
+    /* FONDO */
     body::before {
       content: "";
       position: fixed;
@@ -32,56 +28,67 @@
       background-image: url('./images/pattern.svg');
       background-repeat: repeat;
       background-size: 220px;
-      opacity: 0.25;
-      pointer-events: none;
+      opacity: 0.2;
+      z-index: 0;
     }
 
-    .container {
+    /* PORTADA */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'NewYork', serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+    }
+
+    /* SECCIONES */
+    .section {
       background: white;
+      margin: 30px auto;
       width: 85%;
       max-width: 380px;
-      margin: 40px auto;
       padding: 30px 20px;
       text-align: center;
-
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       border-radius: 6px;
       position: relative;
       z-index: 1;
 
-      animation: fadeIn 1.2s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
     }
 
-    .versiculo {
-      font-size: 13px;
-      margin-bottom: 20px;
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .nombres {
       font-family: 'NewYork', serif;
       font-size: 24px;
       letter-spacing: 3px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .mensaje {
-      margin: 20px 0;
-      font-size: 15px;
-    }
-
-    .evento {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 25px;
-      font-size: 14px;
-      gap: 10px;
+      margin-bottom: 15px;
     }
 
     #countdown {
-      margin-top: 20px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 18px;
+    }
+
+    iframe {
+      border: none;
+      border-radius: 6px;
     }
 
     input {
@@ -102,102 +109,123 @@
       cursor: pointer;
     }
 
-    h3 {
-      margin-top: 25px;
+    h2 {
+      margin-bottom: 15px;
     }
 
-    /* ANIMACIÓN */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 480px) {
-      .container {
-        width: 88%;
-        max-width: 360px;
-        margin: 30px auto;
-      }
-
-      .nombres {
-        font-size: 22px;
-      }
-
-      .evento {
-        flex-direction: column;
-        align-items: center;
+      .hero h1 {
+        font-size: 26px;
       }
     }
-
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<!-- 🌸 PORTADA -->
+<section class="hero">
+  <h1>LIZBETH & JONATHAN</h1>
+  <p>05 Diciembre 2026</p>
+</section>
 
-    <p class="versiculo">
-      Así que ya no son dos, sino uno solo. <br>
-      Por tanto, lo que Dios ha unido, que no lo separe el hombre. <br>
-      <strong>Mateo 19:6</strong>
-    </p>
+<!-- 💍 INVITACIÓN ORIGINAL -->
+<section class="section">
+  <p>
+    Así que ya no son dos, sino uno solo. <br>
+    Por tanto, lo que Dios ha unido, que no lo separe el hombre. <br>
+    <strong>Mateo 19:6</strong>
+  </p>
 
-    <h1 class="nombres">
-      LIZBETH GUADALUPE <br>&<br> JONATHAN MARTÍN
-    </h1>
+  <h2 class="nombres">
+    LIZBETH GUADALUPE <br>&<br> JONATHAN MARTÍN
+  </h2>
 
-    <p class="mensaje">
-      En compañía de nuestras familias <br><br>
-      Tenemos el gusto de invitarlos a nuestro enlace matrimonial.
-    </p>
+  <p>
+    En compañía de nuestras familias <br><br>
+    Tenemos el gusto de invitarlos a nuestro enlace matrimonial.
+  </p>
 
-    <div class="evento">
-      <div>
-        <p>Sábado</p>
-        <p>05 Diciembre 2026</p>
-        <p>3:00 p.m.</p>
-      </div>
+  <p><strong>Sábado 05 Diciembre 2026</strong></p>
+  <p>3:00 p.m.</p>
+  <p>Mi Rinconcito</p>
+</section>
 
-      <div>
-        <p>Mi Rinconcito</p>
-      </div>
-    </div>
+<!-- ⏳ CUENTA REGRESIVA -->
+<section class="section">
+  <h2>Faltan</h2>
+  <div id="countdown"></div>
+</section>
 
-    <div id="countdown"></div>
+<!-- ❤️ HISTORIA -->
+<section class="section">
+  <h2>Nuestra Historia</h2>
+  <p>
+    Todo comenzó con una mirada... <br><br>
+    Hoy queremos compartir este momento tan especial contigo.
+  </p>
+</section>
 
-    <h3>Confirma tu asistencia</h3>
+<!-- 📍 MAPA -->
+<section class="section">
+  <h2>Ubicación</h2>
 
-    <input type="text" id="nombre" placeholder="Tu nombre">
-    <br>
-    <button onclick="confirmar()">Confirmar</button>
+  <iframe 
+    src="https://www.google.com/maps?q=Mi+Rinconcito&output=embed"
+    width="100%" height="250">
+  </iframe>
+</section>
 
-  </div>
+<!-- 🕓 ITINERARIO -->
+<section class="section">
+  <h2>Itinerario</h2>
+  <p>3:00 pm - Ceremonia</p>
+  <p>5:00 pm - Recepción</p>
+  <p>8:00 pm - Cena</p>
+</section>
 
-  <script>
-    const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
+<!-- 💌 RSVP -->
+<section class="section">
+  <h2>Confirma tu asistencia</h2>
 
-    setInterval(() => {
-      const ahora = new Date().getTime();
-      const diff = fecha - ahora;
+  <input type="text" id="nombre" placeholder="Tu nombre">
+  <br>
+  <button onclick="confirmar()">Confirmar</button>
+</section>
 
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+<script>
+  // CONTADOR
+  const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
 
-      document.getElementById("countdown").innerHTML =
-        "Faltan " + dias + " días 💍";
-    }, 1000);
+  setInterval(() => {
+    const ahora = new Date().getTime();
+    const diff = fecha - ahora;
 
-    function confirmar() {
-      const nombre = document.getElementById("nombre").value;
-      alert("Gracias por confirmar, " + nombre + " 💌");
-    }
-  </script>
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("countdown").innerHTML =
+      dias + " días 💍";
+  }, 1000);
+
+  // RSVP
+  function confirmar() {
+    const nombre = document.getElementById("nombre").value;
+    alert("Gracias por confirmar, " + nombre + " 💌");
+  }
+
+  // ANIMACIÓN SCROLL
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
