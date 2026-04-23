@@ -35,31 +35,38 @@
       opacity: 0.2;
       z-index: 0;
     }
+.hero {
+  background: #ffffff;
+  margin: 20px auto;
+  max-width: 350px;
+  padding: 30px 20px;
 
-    .hero {
-      background: #6f8f76;
-      margin: 10px auto;
-      max-width: 380px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: white;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  border-radius: 6px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border: 20px solid #6f8f76;
+  border-radius: 6px;
+}
 
     .hero h1 {
       font-family: 'NewYork';
       margin-bottom: 1px;
-      font-size: 32px;
-      letter-spacing: 3px;
+      font-size: 31px;
+      letter-spacing: 2px;
     }
 
     .hero h2 {
@@ -77,8 +84,14 @@
 
     .hero h4 {
       font-family: 'Sparkling';
+      margin-top: 20px;
       font-size: 35px;
       letter-spacing: 4px;
+    }
+
+    .iniciales{
+      width: 200px;
+      margin-bottom: 10px;
     }
 
     /* SECCIONES */
@@ -316,11 +329,12 @@
 <section class="hero">
   <h4>¡Nos   Casamos!</h4>
 
-  <h1>LIZBETH GUADALUPE</h1>
+  <!-- <h1>LIZBETH GUADALUPE</h1>
   <h2>AMBRIS BEDOLLA</h2>
   <h1>&</h1>
   <h1>JONATHAN MARTÍN</h1>
-  <h2>VAZQUEZ GONZALEZ</h2>
+  <h2>VAZQUEZ GONZALEZ</h2> -->
+   <img src="images/iniciales.svg" class="iniciales">
 
   <div class="linea"></div>
 
