@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda Lizbeth & Jonathan</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   <style>
     @font-face {
@@ -35,32 +35,34 @@
       opacity: 0.2;
       z-index: 0;
     }
-.hero {
-  background: #ffffff;
-  margin: 20px auto;
-  max-width: 350px;
-  padding: 30px 20px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    .hero {
+      background: #ffffff;
+      margin: 20px auto;
+      max-width: 350px;
+      padding: 30px 20px;
 
-  text-align: center;
-  position: relative;
-  z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 
-  border-radius: 6px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  border: 20px solid #6f8f76;
-  border-radius: 6px;
-}
+      border-radius: 6px;
+
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0px;
+      border: 20px solid #6f8f76;
+      border-radius: 6px;
+    }
 
     .hero h1 {
       font-family: 'NewYork';
@@ -90,7 +92,7 @@
       letter-spacing: 4px;
     }
 
-    .iniciales{
+    .iniciales {
       margin-left: 40px;
       width: 280px;
       margin-bottom: 10px;
@@ -104,7 +106,7 @@
       max-width: 380px;
       padding: 20px 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       border-radius: 6px;
       position: relative;
       z-index: 1;
@@ -119,21 +121,21 @@
       transform: translateY(0);
     }
 
-    .nombres h1{
+    .nombres h1 {
       font-family: 'NewYork';
       margin-bottom: 1px;
       font-size: 24px;
       letter-spacing: 3px;
     }
 
-    .nombres h2{
+    .nombres h2 {
       font-family: 'EB Garamond', serif;
       margin-top: 1px;
       font-size: 15px;
       letter-spacing: 1px;
     }
 
-    .familias{
+    .familias {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
@@ -141,12 +143,12 @@
       margin-top: 20px;
     }
 
-    .familias p{
+    .familias p {
       margin: 5px 0;
       font-size: 15px;
     }
 
-    .info-boda{
+    .info-boda {
       display: grid;
       grid-template-columns: 1fr 2px 1fr;
       align-items: center;
@@ -156,12 +158,12 @@
       font-family: 'EB Garamond', serif;
     }
 
-    .info-boda .col p{
+    .info-boda .col p {
       margin: 1px 0;
       font-size: 15px;
     }
 
-    .linea-vertical{
+    .linea-vertical {
       width: 2px;
       height: 100%;
       background: #6f8f76;
@@ -202,7 +204,7 @@
       -moz-appearance: none;
 
       /* Sombra suave */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 
       /* Flechita personalizada */
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236f8f76'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
@@ -228,12 +230,12 @@
       font-size: 15px;
       color: #333;
 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
     }
 
     input::placeholder {
-      color: rgba(0,0,0,0.4);
+      color: rgba(0, 0, 0, 0.4);
       font-style: italic;
     }
 
@@ -270,7 +272,8 @@
       background: white;
       margin: 15px auto;
     }
-    .timeline{
+
+    .timeline {
       max-width: 420px;
       margin: 20px auto;
       position: relative;
@@ -278,19 +281,20 @@
     }
 
     /* LÍNEA VERTICAL CONTINUA */
-    .timeline::before{
+    .timeline::before {
       content: "";
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 180px; /* posición de la línea */
+      left: 180px;
+      /* posición de la línea */
       width: 2px;
       background: #6f8f76;
 
     }
 
     /* cada fila */
-    .item{
+    .item {
       display: flex;
       align-items: center;
       padding: 12px 0;
@@ -298,7 +302,7 @@
     }
 
     /* hora izquierda */
-    .hora{
+    .hora {
       width: 110px;
       text-align: right;
       padding-left: 20px;
@@ -307,7 +311,7 @@
     }
 
     /* punto sobre la línea */
-    .item::before{
+    .item::before {
       content: "";
       position: absolute;
       left: 176px;
@@ -318,7 +322,7 @@
     }
 
     /* evento derecha */
-    .evento{
+    .evento {
       padding-left: 80px;
       font-size: 16px;
     }
@@ -327,223 +331,270 @@
 
 <body>
 
-<!-- PORTADA -->
-<section class="hero section">
+  <!-- PORTADA -->
+  <section class="hero section">
 
-  <h4>¡Nos   Casamos!</h4>
-   <img src="images/iniciales.svg" class="iniciales">
-  <div class="linea"></div>
+    <h4>¡Nos Casamos!</h4>
+    <img src="images/iniciales.svg" class="iniciales">
+    <div class="linea"></div>
 
-  <h3>05 Diciembre 2026</h3>
-</section>
+    <h3>05 Diciembre 2026</h3>
+  </section>
 
-<!-- INVITACIÓN -->
-<section class="section">
-  <p>
-    Así que ya no son dos, sino uno solo.<br>
-    Por tanto, lo que Dios ha unido,<br>
-    que no lo separe el hombre.<br>
-    - Mateo 19:6 -
-  </p>
-  
-  <div class="nombres">
-    <h1>LIZBETH GUADALUPE</h1>
-    <h2>AMBRIS BEDOLLA</h2>
-    <h1>&</h1>
-    <h1>JONATHAN MARTÍN</h1>
-    <h2>VAZQUEZ GONZALEZ</h2>
-  </div>
+  <!-- INVITACIÓN -->
+  <section class="section">
+    <p>
+      Así que ya no son dos, sino uno solo.<br>
+      Por tanto, lo que Dios ha unido,<br>
+      que no lo separe el hombre.<br>
+      - Mateo 19:6 -
+    </p>
 
-  <p>
-    En compañía de nuestras familias
-  </p>
-  <div class="familias">
-    <div class="col">
-      <p>Gloria Bedolla Ferreira</p>
-      <p>Juvenal Ambriz Ruiz</p>
+    <div class="nombres">
+      <h1>LIZBETH GUADALUPE</h1>
+      <h2>AMBRIS BEDOLLA</h2>
+      <h1>&</h1>
+      <h1>JONATHAN MARTÍN</h1>
+      <h2>VAZQUEZ GONZALEZ</h2>
     </div>
 
-    <div class="col">
-      <p>Sandra Gonzalez Rico</p>
-      <p>Martin Vazquez Medrano</p>
-    </div>
-  </div>
+    <p>
+      En compañía de nuestras familias
+    </p>
+    <div class="familias">
+      <div class="col">
+        <p>Gloria Bedolla Ferreira</p>
+        <p>Juvenal Ambriz Ruiz</p>
+      </div>
 
-  <p>
-    Tenemos el gusto de invitarlos a nuestro enlace<br>
-    matrimonial. Nos encantarìa que nos acompañes.
-  </p>
-
-  <div class="info-boda">
-
-    <div class="col">
-      <p>Sábado</p>
-      <p>05 Diciembre 2026</p>
-      <p>3:00 p.m.</p>
+      <div class="col">
+        <p>Sandra Gonzalez Rico</p>
+        <p>Martin Vazquez Medrano</p>
+      </div>
     </div>
 
-    <div class="linea-vertical"></div>
+    <p>
+      Tenemos el gusto de invitarlos a nuestro enlace<br>
+      matrimonial. Nos encantarìa que nos acompañes.
+    </p>
 
-    <div class="col">
-      <p>Mi Rinconcito Salón Jardín</p>
-      <p>Conocido Lote 4 Manzana 5</p>
-      <p>Progreso, 61312 Mich.</p>
+    <div class="info-boda">
+
+      <div class="col">
+        <p>Sábado</p>
+        <p>05 Diciembre 2026</p>
+        <p>3:00 p.m.</p>
+      </div>
+
+      <div class="linea-vertical"></div>
+
+      <div class="col">
+        <p>Mi Rinconcito Salón Jardín</p>
+        <p>Conocido Lote 4 Manzana 5</p>
+        <p>Progreso, 61312 Mich.</p>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- CONTADOR -->
+  <section class="section">
+    <h2>Faltan</h2>
 
-<!-- CONTADOR -->
-<section class="section">
-  <h2>Faltan</h2>
-
-  <div id="countdown">
-    <span id="dias"></span>
-    <span id="horas"></span>
-    <span id="minutos"></span>
-    <span id="segundos"></span>
-  </div>
-</section>
-
-<!-- MAPA -->
-<section class="section">
-  <h2>Ubicación</h2>
-  <iframe src="https://www.google.com/maps?q=19.681944466379043, -101.05307933987761&output=embed" width="100%" height="250"></iframe>
-</section>
-
-<!-- ITINERARIO -->
-<section class="section">
-  <h2>Itinerario</h2>
-  <div class="timeline">
-
-    <div class="item">
-      <div class="hora">3:00 p.m.</div>
-      <div class="evento">Boda Civil</div>
+    <div id="countdown">
+      <span id="dias"></span>
+      <span id="horas"></span>
+      <span id="minutos"></span>
+      <span id="segundos"></span>
     </div>
+  </section>
 
-    <div class="item">
-      <div class="hora">3:30 p.m.</div>
-      <div class="evento">Recepción</div>
+  <!-- MAPA -->
+  <section class="section">
+    <h2>Ubicación</h2>
+    <iframe src="https://www.google.com/maps?q=19.681944466379043, -101.05307933987761&output=embed" width="100%"
+      height="250"></iframe>
+  </section>
+
+  <!-- ITINERARIO -->
+  <section class="section">
+    <h2>Itinerario</h2>
+    <div class="timeline">
+
+      <div class="item">
+        <div class="hora">3:00 p.m.</div>
+        <div class="evento">Boda Civil</div>
+      </div>
+
+      <div class="item">
+        <div class="hora">3:30 p.m.</div>
+        <div class="evento">Recepción</div>
+      </div>
+
+      <div class="item">
+        <div class="hora">4:30 p.m.</div>
+        <div class="evento">Comida</div>
+      </div>
+
+      <div class="item">
+        <div class="hora">5:30 p.m.</div>
+        <div class="evento">Fiesta</div>
+      </div>
+
+      <div class="item">
+        <div class="hora">8:00 p.m.</div>
+        <div class="evento">Fin</div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="item">
-      <div class="hora">4:30 p.m.</div>
-      <div class="evento">Comida</div>
-    </div>
+  <!-- RESERVA DE PERSONAS -->
+  <section class="section">
+    <h2>Confirma tu asistencia</h2>
 
-    <div class="item">
-      <div class="hora">5:30 p.m.</div>
-      <div class="evento">Fiesta</div>
-    </div>
+    <select id="cantidad" onchange="cambiarCampos()">
+      <option value="">¿Cuántas personas asistirán?</option>
+      <option value="1">1 persona</option>
+      <option value="2">2 personas</option>
+      <option value="3">3 personas</option>
+      <option value="4">4 personas</option>
+      <option value="5">5 personas</option>
+    </select>
 
-    <div class="item">
-      <div class="hora">8:00 p.m.</div>
-      <div class="evento">Fin</div>
-    </div>
+    <div id="campos"></div>
 
-  </div>
-</section>
+    <button id="btnConfirmar" onclick="confirmar()">Confirmar</button>
+  </section>
 
-<!-- RESERVA DE PERSONAS -->
-<section class="section">
-  <h2>Confirma tu asistencia</h2>
+  <script>
+    // CONTADOR DINÁMICO
+    const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
 
-  <select id="cantidad" onchange="cambiarCampos()">
-    <option value="">¿Cuántas personas asistirán?</option>
-    <option value="1">1 persona</option>
-    <option value="2">2 personas</option>
-    <option value="3">3 personas</option>
-    <option value="4">4 personas</option>
-    <option value="5">5 personas</option>
-  </select>
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const diff = fecha - ahora;
 
-  <div id="campos"></div>
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "¡Llegó el gran día! 💍";
+        return;
+      }
 
-  <button onclick="confirmar()">Confirmar</button>
-</section>
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
 
-<script>
-  // CONTADOR DINÁMICO
-  const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
+      document.getElementById("dias").innerHTML = dias + " dias";
+      document.getElementById("horas").innerHTML = horas + " hrs";
+      document.getElementById("minutos").innerHTML = minutos + " min";
+      document.getElementById("segundos").innerHTML = segundos + " seg";
+    }, 1000);
 
-  setInterval(() => {
-    const ahora = new Date().getTime();
-    const diff = fecha - ahora;
+    // CAMPOS DINÁMICOS
+    function cambiarCampos() {
+      const cantidad = document.getElementById("cantidad").value;
+      const contenedor = document.getElementById("campos");
 
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "¡Llegó el gran día! 💍";
-      return;
-    }
+      contenedor.innerHTML = "";
 
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diff / (1000 * 60)) % 60);
-    const segundos = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("dias").innerHTML = dias + " dias";
-    document.getElementById("horas").innerHTML = horas + " hrs";
-    document.getElementById("minutos").innerHTML = minutos + " min";
-    document.getElementById("segundos").innerHTML = segundos + " seg";
-  }, 1000);
-
-  // CAMPOS DINÁMICOS
-  function cambiarCampos() {
-    const cantidad = document.getElementById("cantidad").value;
-    const contenedor = document.getElementById("campos");
-
-    contenedor.innerHTML = "";
-
-    if (cantidad == "1" || cantidad == "2") {
-      for (let i = 1; i <= cantidad; i++) {
-        contenedor.innerHTML += `
+      if (cantidad == "1" || cantidad == "2") {
+        for (let i = 1; i <= cantidad; i++) {
+          contenedor.innerHTML += `
           <input type="text" placeholder="Nombre ${i}" class="nombre"><br>
         `;
+        }
       }
-    }
 
-    if (cantidad >= 3) {
-      contenedor.innerHTML = `
+      if (cantidad >= 3) {
+        contenedor.innerHTML = `
         <input type="text" placeholder="Familia (Apellidos)" id="familia">
       `;
-    }
-  }
-
-  // CONFIRMAR
-  function confirmar() {
-    const cantidad = document.getElementById("cantidad").value;
-
-    if (!cantidad) {
-      alert("Selecciona cantidad de personas");
-      return;
-    }
-
-    let nombres = [];
-
-    if (cantidad == "1" || cantidad == "2") {
-      document.querySelectorAll(".nombre").forEach(input => {
-        nombres.push(input.value);
-      });
-    } else {
-      const familia = document.getElementById("familia").value;
-      nombres.push("Familia " + familia);
-    }
-
-    alert("Confirmación enviada:\n" + nombres.join(", "));
-  }
-
-  // ANIMACIÓN SCROLL
-  const sections = document.querySelectorAll('.section');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
       }
-    });
-  });
+    }
 
-  sections.forEach(sec => observer.observe(sec));
-</script>
+    // CONFIRMAR
+    async function confirmar() {
+      const btn = document.getElementById("btnConfirmar");
+
+      // Deshabilitar botón
+      btn.disabled = true;
+      btn.innerText = "Enviando...";
+
+      const cantidad = document.getElementById("cantidad").value;
+
+      if (!cantidad) {
+        alert("Selecciona cantidad de personas");
+        btn.disabled = false;
+        btn.innerText = "Confirmar";
+        return;
+      }
+
+      let nombres = [];
+
+      if (cantidad == "1" || cantidad == "2") {
+        document.querySelectorAll(".nombre").forEach(input => {
+          if (input.value.trim() !== "") {
+            nombres.push(input.value);
+          }
+        });
+      } else {
+        const familia = document.getElementById("familia").value;
+        nombres.push("Familia " + familia);
+      }
+
+      try {
+        const response = await fetch('/api/confirmar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cantidad, nombres })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error("Error al guardar");
+        }
+
+        alert("Gracias por confirmar tu asistencia!");
+
+        //LIMPIAR FORMULARIO COMPLETO
+        document.getElementById("cantidad").value = "";
+
+        // eliminar todos los inputs dinámicos
+        document.getElementById("campos").innerHTML = "";
+
+        document.querySelectorAll(".nombre").forEach(input => {
+          input.value = "";
+        });
+
+      } catch (err) {
+        console.error(err);
+        alert("Hubo un error, intenta de nuevo");
+
+        //Rehabilitar botón si falla
+        btn.disabled = false;
+        btn.innerText = "Confirmar";
+        return;
+      }
+
+      btn.innerText = "Confirmado ✔";
+    }
+
+    // ANIMACIÓN SCROLL
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
 
 </body>
+
 </html>
