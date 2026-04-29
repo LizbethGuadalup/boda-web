@@ -470,6 +470,11 @@
     #overlay.abierto::after {
       opacity: 0;
     }
+
+    body.no-scroll {
+      overflow: hidden;
+      height: 100vh;
+    }
   </style>
 </head>
 
@@ -484,7 +489,7 @@
       <span>¡Haz clic aquí!</span>
     </div>
   </div>
-  
+
   <!-- PORTADA -->
   <section class="hero section">
 
@@ -622,8 +627,24 @@
   </section>
 
   <script>
+    document.body.classList.add("no-scroll");
+
+    const sello = document.getElementById("sello");
+    const overlay = document.getElementById("overlay");
+
+    sello.addEventListener("click", () => {
+      overlay.classList.add("abierto");
+
+      // Activar scroll después de abrir
+      setTimeout(() => {
+        document.body.classList.remove("no-scroll");
+        overlay.style.display = "none";
+      }, 1200);
+    });
+
     // CONTADOR DINÁMICO
     const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
+
 
     setInterval(() => {
       const ahora = new Date().getTime();
@@ -748,17 +769,6 @@
 
     sections.forEach(sec => observer.observe(sec));
 
-    const sello = document.getElementById("sello");
-    const overlay = document.getElementById("overlay");
-
-    sello.addEventListener("click", () => {
-      overlay.classList.add("abierto");
-
-      // Opcional: quitar overlay después de animación
-      setTimeout(() => {
-        overlay.style.display = "none";
-      }, 1300);
-    });
   </script>
 
 </body>
