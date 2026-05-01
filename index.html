@@ -94,7 +94,8 @@
 
     .iniciales {
       margin-right: 20px;
-      margin-top:  50px ;
+      margin-top: 40px;
+      margin-bottom: 40px;
       width: 150px;
     }
 
@@ -508,9 +509,15 @@
       position: absolute;
       left: 0;
       width: 100%;
-      bottom: 180px;
+      bottom: 200px;
       z-index: 2;
       pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .rasgado {
+        bottom: 230px;
+      }
     }
 
     .contenido {
@@ -523,11 +530,10 @@
     .contenido::after {
       content: "";
       position: absolute;
-      bottom: -1px;
+      bottom: -40px;
       left: 0;
       width: 100%;
       height: 60px;
-
       background: url('./images/rasgado.png') no-repeat;
       background-size: cover;
     }
@@ -554,7 +560,7 @@
     @media (max-width: 480px) {
 
       .foto {
-        height: 250px;
+        height: 350px;
       }
     }
   </style>
@@ -849,13 +855,13 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
-          // 👇 opcional: si quieres que se repita la animación al subir/bajar
+          //  se repite la animación al subir/bajar
           entry.target.classList.remove('visible');
         }
       });
     }, {
-      threshold: 0.2, // 👈 porcentaje visible antes de animar
-      rootMargin: "0px 0px -50px 0px" // 👈 suaviza el momento de activación
+      threshold: 0.3, // porcentaje visible antes de animar
+      rootMargin: "0px 0px -50px 0px" //suaviza el momento de activación
     });
 
     sections.forEach(sec => observer.observe(sec));
