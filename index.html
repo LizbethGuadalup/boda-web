@@ -431,6 +431,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      touch-action: none;
+      overscroll-behavior: contain;
     }
 
     /* LADOS (las "puertas") */
@@ -571,13 +573,27 @@
       opacity: 0;
     }
 
+    html.no-scroll,
     body.no-scroll {
       overflow: hidden;
-      height: 100vh;
+      height: 100%;
     }
 
-    html.no-scroll {
-      overflow: hidden;
+    .scroll-indicador {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-family: 'EB Garamond', serif;
+      color: #fff;
+      z-index: 5;
+      opacity: 0.9;
+    }
+
+    .scroll-indicador span {
+      font-size: 14px;
+      letter-spacing: 1px;
     }
 
     .portada {
@@ -667,23 +683,6 @@
       transition: opacity 0.5s ease;
     }
 
-    .scroll-indicador {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      font-family: 'EB Garamond', serif;
-      color: #fff;
-      z-index: 5;
-      opacity: 0.9;
-    }
-
-    .scroll-indicador span {
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
     .flecha {
       font-size: 22px;
       margin-top: 5px;
@@ -730,7 +729,9 @@
     <img src="images/rasgado.png" class="rasgado">
     <div class="foto"></div>
     <div class="scroll-indicador">
-      <div class="flecha tiempo" style="width: 150px; font-size: 18px; color: #ffffff; background: rgba(82, 82, 82, 0.8);  padding: 2px 2px;">Desliza hacia arriba <br>⌃</div>
+      <div class="flecha tiempo"
+        style="width: 150px; font-size: 18px; color: #ffffff; background: rgba(82, 82, 82, 0.8);  padding: 2px 2px;">
+        Desliza hacia arriba <br>⌃</div>
     </div>
   </section>
   </div>
@@ -901,6 +902,7 @@
 
   <script>
     document.body.classList.add("no-scroll");
+    document.documentElement.classList.add("no-scroll");
 
     const sello = document.getElementById("sello");
     const overlay = document.getElementById("overlay");
@@ -911,13 +913,12 @@
       // Activar scroll después de abrir
       setTimeout(() => {
         document.body.classList.remove("no-scroll");
+        document.documentElement.classList.remove("no-scroll");
         overlay.style.display = "none";
       }, 1200);
     });
 
-    document.documentElement.classList.add("no-scroll");
     // luego al abrir:
-    document.documentElement.classList.remove("no-scroll");
 
     // CONTADOR DINÁMICO
     const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
