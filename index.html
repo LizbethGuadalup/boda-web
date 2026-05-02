@@ -237,14 +237,39 @@
 
     /* asegurar contenido arriba */
     .countdown-section h2,
-    .countdown-section #countdown,
-    .countdown-section button {
+    .countdown-section #countdown{
       position: relative;
       z-index: 2;
       color: rgb(0, 0, 0);
       margin-top: 30px;
       margin-bottom: 10px;
       font-family: 'EB Garamond', serif;
+    }
+
+    .countdown-section a.boton-calendario {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+    }
+
+    .boton-calendario {
+      display: inline-block;
+      background: #6f8f76;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .boton-calendario:hover {
+      background: #5e7c65;
     }
 
     select {
@@ -728,8 +753,7 @@
         <span class="label">Seg</span>
       </div>
     </div>
-    <button style="color: #ffffff; margin-top: 0px; margin-bottom: 10px;" onclick="descargarEvento()">Agregar al
-      calendario</button>
+    <a href="/boda.ics" class="boton-calendario">Agregar al calendario</a>
   </section>
 
   <!-- MAPA -->
@@ -833,29 +857,6 @@
       document.getElementById("minutos").innerHTML = minutos;
       document.getElementById("segundos").innerHTML = segundos;
     }, 1000);
-
-    function descargarEvento() {
-      const ics = `
-        BEGIN:VCALENDAR
-        VERSION:2.0
-        BEGIN:VEVENT
-        SUMMARY:Boda Lizbeth & Jonathan
-        DESCRIPTION:Nos encantaría que nos acompañes en nuestro gran día
-        LOCATION:Mi Rinconcito Salón Jardín
-        DTSTART:20261205T150000
-        DTEND:20261205T210000
-        END:VEVENT
-        END:VCALENDAR
-      `;
-
-      const blob = new Blob([ics], { type: 'text/calendar' });
-      const url = window.URL.createObjectURL(blob);
-
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'boda.ics';
-      a.click();
-    }
 
     // CAMPOS DINÁMICOS
     function cambiarCampos() {
