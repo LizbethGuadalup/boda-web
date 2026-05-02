@@ -102,7 +102,7 @@
     /* SECCIONES */
     .section {
       background: white;
-      margin: 30px auto;
+      margin: 10px auto;
       width: 85%;
       max-width: 380px;
       padding: 20px 20px;
@@ -179,17 +179,72 @@
     #countdown {
       display: flex;
       justify-content: center;
-      gap: 10px;
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 10px;
+      gap: 15px;
+      margin-top: 120px;
     }
 
-    #countdown span {
-      background: #6f8f76;
-      color: white;
-      padding: 8px 10px;
-      border-radius: 4px;
+    /* cada cajita */
+    .tiempo {
+      margin-top: 140px;
+      width: 70px;
+      padding: 15px 10px;
+      border-radius: 12px;
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(8px);
+
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* número */
+    .numero {
+      display: block;
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'EB Garamond', serif;
+    }
+
+    /* texto debajo */
+    .label {
+      display: block;
+      font-size: 13px;
+      margin-top: 5px;
+      letter-spacing: 1px;
+      font-family: 'EB Garamond', serif;
+    }
+
+    #countdown span:hover {
+      transform: translateY(-3px);
+    }
+
+    .countdown-section {
+      background: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    /* imagen de fondo */
+    .countdown-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('./images/foto_1.png') center/cover no-repeat;
+      z-index: 0;
+    }
+
+    /* asegurar contenido arriba */
+    .countdown-section h2,
+    .countdown-section #countdown,
+    .countdown-section button {
+      position: relative;
+      z-index: 2;
+      color: rgb(0, 0, 0);
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-family: 'EB Garamond', serif;
     }
 
     select {
@@ -260,6 +315,11 @@
       margin-top: 10px;
       border-radius: 4px;
       cursor: pointer;
+      font-family: 'EB Garamond', serif;
+    }
+
+    button:hover {
+      background: #5e7c65;
     }
 
     iframe {
@@ -644,15 +704,32 @@
   </section>
 
   <!-- CONTADOR -->
-  <section class="section">
-    <h2>Faltan</h2>
+  <section class="section countdown-section">
+    <h2 style="margin-top: 50px;">Faltan</h2>
 
     <div id="countdown">
-      <span id="dias"></span>
-      <span id="horas"></span>
-      <span id="minutos"></span>
-      <span id="segundos"></span>
+      <div class="tiempo">
+        <span class="numero" id="dias"></span>
+        <span class="label">Días</span>
+      </div>
+
+      <div class="tiempo">
+        <span class="numero" id="horas"></span>
+        <span class="label">Horas</span>
+      </div>
+
+      <div class="tiempo">
+        <span class="numero" id="minutos"></span>
+        <span class="label">Min</span>
+      </div>
+
+      <div class="tiempo">
+        <span class="numero" id="segundos"></span>
+        <span class="label">Seg</span>
+      </div>
     </div>
+    <button style="color: #ffffff; margin-top: 0px; margin-bottom: 10px;" onclick="descargarEvento()">Agregar al
+      calendario</button>
   </section>
 
   <!-- MAPA -->
@@ -751,11 +828,34 @@
       const minutos = Math.floor((diff / (1000 * 60)) % 60);
       const segundos = Math.floor((diff / 1000) % 60);
 
-      document.getElementById("dias").innerHTML = dias + " dias";
-      document.getElementById("horas").innerHTML = horas + " hrs";
-      document.getElementById("minutos").innerHTML = minutos + " min";
-      document.getElementById("segundos").innerHTML = segundos + " seg";
+      document.getElementById("dias").innerHTML = dias;
+      document.getElementById("horas").innerHTML = horas;
+      document.getElementById("minutos").innerHTML = minutos;
+      document.getElementById("segundos").innerHTML = segundos;
     }, 1000);
+
+    function descargarEvento() {
+      const ics = `
+        BEGIN:VCALENDAR
+        VERSION:2.0
+        BEGIN:VEVENT
+        SUMMARY:Boda Lizbeth & Jonathan
+        DESCRIPTION:Nos encantaría que nos acompañes en nuestro gran día
+        LOCATION:Mi Rinconcito Salón Jardín
+        DTSTART:20261205T150000
+        DTEND:20261205T210000
+        END:VEVENT
+        END:VCALENDAR
+      `;
+
+      const blob = new Blob([ics], { type: 'text/calendar' });
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'boda.ics';
+      a.click();
+    }
 
     // CAMPOS DINÁMICOS
     function cambiarCampos() {
@@ -860,7 +960,7 @@
         }
       });
     }, {
-      threshold: 0.3, // porcentaje visible antes de animar
+      threshold: 0.03, // porcentaje visible antes de animar
       rootMargin: "0px 0px -50px 0px" //suaviza el momento de activación
     });
 
