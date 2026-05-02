@@ -660,12 +660,52 @@
     .collage img {
       width: 100%;
       height: 200px;
-      
       object-fit: cover;
       border-radius: 10px;
 
       opacity: 1;
       transition: opacity 0.5s ease;
+    }
+
+    .scroll-indicador {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-family: 'EB Garamond', serif;
+      color: #fff;
+      z-index: 5;
+      opacity: 0.9;
+    }
+
+    .scroll-indicador span {
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .flecha {
+      font-size: 22px;
+      margin-top: 5px;
+      animation: subirBajar 1.5s infinite;
+    }
+
+    /* animación */
+    @keyframes subirBajar {
+      0% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+
+      50% {
+        transform: translateY(-6px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
     }
   </style>
 </head>
@@ -689,7 +729,11 @@
     </div>
     <img src="images/rasgado.png" class="rasgado">
     <div class="foto"></div>
+    <div class="scroll-indicador">
+      <div class="flecha tiempo" style="width: 150px; font-size: 18px; color: #000000; background: rgba(255, 255, 255, 0.8);  padding: 2px 2px;">Desliza hacia arriba <br>⌃</div>
+    </div>
   </section>
+  </div>
 
   <!-- INVITACIÓN -->
   <section class="section">
