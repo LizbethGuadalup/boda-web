@@ -545,6 +545,26 @@
       height: 100%;
     }
 
+    .btn-musica{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    .btn-musica img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .scroll-indicador {
       position: absolute;
       bottom: 25px;
@@ -701,6 +721,13 @@
 </head>
 
 <body>
+<button id="btnMusica" class="btn-musica">
+  <img id="iconoMusica" src="/images/play.png" alt="Música">
+</button>
+
+<audio id="musica" loop>
+  <source src="/audio.mp3" type="audio/mpeg">
+</audio>
 
   <div id="overlay">
     <div class="sobre">
@@ -907,8 +934,28 @@
 
     const sello = document.getElementById("sello");
     const overlay = document.getElementById("overlay");
+    const musica = document.getElementById("musica");
 
     sello.addEventListener("click", () => {
+      
+      musica.volume = 0.15;
+
+      musica.play().catch(err => {
+        console.log(err);
+      });
+      const btnMusica = document.getElementById("btnMusica");
+      const iconoMusica = document.getElementById("iconoMusica");
+
+      btnMusica.addEventListener("click", () => {
+        if (musica.paused) {
+          musica.play();
+          iconoMusica.src = "/images/pause.png";
+        } else {
+          musica.pause();
+          iconoMusica.src = "/images/play.png";
+        }
+      });
+
       overlay.classList.add("abierto");
 
       // Activar scroll después de abrir
