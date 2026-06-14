@@ -487,7 +487,7 @@
     /* sello centrado */
     .sello {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 50%;
       transform: translateX(-50%) translateY(20%);
       z-index: 3;
@@ -497,7 +497,7 @@
 
     @media screen and (min-width: 1024px) {
       .sello {
-        width: 200px;
+        width: 250px;
         transform: translateX(-50%) translateY(160%);
 
       }
@@ -545,7 +545,7 @@
       height: 100%;
     }
 
-    .btn-musica{
+    .btn-musica {
       position: fixed;
       right: 20px;
       bottom: 20px;
@@ -559,7 +559,7 @@
       z-index: 9999;
     }
 
-    .btn-musica img{
+    .btn-musica img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -716,18 +716,17 @@
       border: none;
       display: block;
     }
-    
   </style>
 </head>
 
 <body>
-<button id="btnMusica" class="btn-musica">
-  <img id="iconoMusica" src="/images/play.png" alt="Música">
-</button>
+  <button id="btnMusica" class="btn-musica">
+    <img id="iconoMusica" src="/images/pause.png" alt="Música">
+  </button>
 
-<audio id="musica" loop>
-  <source src="/audio.mp3" type="audio/mpeg">
-</audio>
+  <audio id="musica" loop>
+    <source src="/audio.mp3" type="audio/mpeg">
+  </audio>
 
   <div id="overlay">
     <div class="sobre">
@@ -912,20 +911,21 @@
 
   <!-- RESERVA DE PERSONAS -->
   <section class="section">
+    <img src="images/iniciales.png" class="iniciales">
     <h2>Confirma tu asistencia</h2>
 
-    <select id="cantidad" onchange="cambiarCampos()">
-      <option value="">¿Cuántas personas asistirán?</option>
-      <option value="1">1 persona</option>
-      <option value="2">2 personas</option>
-      <option value="3">3 personas</option>
-      <option value="4">4 personas</option>
-      <option value="5">5 personas</option>
-    </select>
+    <p>
+      Nos encantaría compartir este día tan especial contigo.
+    </p>
 
-    <div id="campos"></div>
+    <p>
+      Por favor confirma tu asistencia antes del
+      <strong>20 de noviembre de 2026</strong>.
+    </p>
 
-    <button id="btnConfirmar" onclick="confirmar()">Confirmar</button>
+    <a href="https://wa.me/4433482174" target="_blank" class="boton-calendario">
+      💌 Confirmar asistencia
+    </a>
   </section>
 
   <script>
@@ -937,7 +937,7 @@
     const musica = document.getElementById("musica");
 
     sello.addEventListener("click", () => {
-      
+
       musica.volume = 0.15;
 
       musica.play().catch(err => {
