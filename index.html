@@ -726,6 +726,8 @@
       height: 350px;
       border: none;
       display: block;
+
+      filter: grayscale(0.2) contrast(1.1);
     }
 
     .modal {
@@ -940,12 +942,11 @@
       </div>
     </div>
     <!-- <a href="/boda.ics" class="boton-calendario">Agregar al calendario</a> -->
-    <a href="https://www.google.com/calendar/render?action=TEMPLATE
-        &text=Boda+Lizbeth+%26+Jonathan
-        &dates=20261205T150000/20261205T210000
-        &details=Nos+encantaría+que+nos+acompañes+en+nuestro+gran+día
-        &location=Mi+Rinconcito+Salón+Jardín" class="boton-calendario">
-      Agregar al calendario</a>
+    <a class="boton-calendario"
+      href="https://www.google.com/calendar/render?action=TEMPLATE&text=Boda%20Lizbeth%20%26%20Jonathan&dates=20261205T150000/20261205T230000&details=Nos%20encantar%C3%ADa%20que%20nos%20acompa%C3%B1es%20en%20nuestro%20gran%20d%C3%ADa&location=Mi%20Rinconcito%20Sal%C3%B3n%20Jard%C3%ADn"
+      target="_blank">
+      Agregar al calendario
+    </a>
   </section>
 
   <!-- COLLAGE -->
@@ -969,7 +970,7 @@
     <h2>Ubicación</h2>
 
     <div class="mapa-container">
-      <iframe src="https://www.google.com/maps?q=19.68203437201728,-101.05308245840105&output=embed" loading="lazy"
+      <iframe src="https://www.google.com/maps?q=19.68203437201728,-101.05308245840105&output=embed&t=m" loading="lazy"
         allowfullscreen>
       </iframe>
     </div>
@@ -977,6 +978,10 @@
     <p class="direccion">
       📍 Mi Rinconcito Salón Jardín, Mich.
     </p>
+
+    <a class="boton-calendario" href="https://maps.app.goo.gl/pmrmg7uQL4ZSQAxt6" target="_blank">
+      Ver en Google Maps
+    </a>
   </section>
 
   <!-- ITINERARIO -->
