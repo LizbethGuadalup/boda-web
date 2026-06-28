@@ -635,6 +635,17 @@
       z-index: 1;
     }
 
+    .dresscode {
+      height: 500px;
+      margin-bottom: -20px;
+      width: 100%;
+      background-image: url('./images/dresscode.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      z-index: 1;
+    }
+
     .foto::before {
       content: "";
       position: absolute;
@@ -883,12 +894,12 @@
 
       <div class="item">
         <div class="hora">3:00 p.m.</div>
-        <div class="evento">Boda Civil</div>
+        <div class="evento">Recepción</div>
       </div>
 
       <div class="item">
         <div class="hora">3:30 p.m.</div>
-        <div class="evento">Recepción</div>
+        <div class="evento">Boda Civil</div>
       </div>
 
       <div class="item">
@@ -902,16 +913,21 @@
       </div>
 
       <div class="item">
-        <div class="hora">8:00 p.m.</div>
+        <div class="hora">11:00 p.m.</div>
         <div class="evento">Fin</div>
       </div>
 
     </div>
   </section>
 
+  <!-- DRESSCODE -->
+  <section class="section">
+    <div class="dresscode"></div>
+  </section>
+
   <!-- RESERVA DE PERSONAS -->
   <section class="section">
-    <img src="images/iniciales.png" class="iniciales">
+    <img src="images/iniciales.png" class="iniciales" style="width: 50px;">
     <h2>Confirma tu asistencia</h2>
 
     <p>
@@ -924,7 +940,7 @@
     </p>
 
     <a href="https://wa.me/4433482174" target="_blank" class="boton-calendario">
-      💌 Confirmar asistencia
+      Confirmar asistencia
     </a>
   </section>
 
@@ -934,27 +950,26 @@
 
     const sello = document.getElementById("sello");
     const overlay = document.getElementById("overlay");
-    const musica = document.getElementById("musica");
 
+    const musica = document.getElementById("musica");
+    const btnMusica = document.getElementById("btnMusica");
+    const iconoMusica = document.getElementById("iconoMusica");
+
+    let estabaReproduciendo = false;
+
+    // ABRIR SOBRE
     sello.addEventListener("click", () => {
+
+      // Evitar doble clic
+      sello.style.pointerEvents = "none";
 
       musica.volume = 0.15;
 
       musica.play().catch(err => {
         console.log(err);
       });
-      const btnMusica = document.getElementById("btnMusica");
-      const iconoMusica = document.getElementById("iconoMusica");
 
-      btnMusica.addEventListener("click", () => {
-        if (musica.paused) {
-          musica.play();
-          iconoMusica.src = "/images/pause.png";
-        } else {
-          musica.pause();
-          iconoMusica.src = "/images/play.png";
-        }
-      });
+      iconoMusica.src = "/images/pause.png";
 
       overlay.classList.add("abierto");
 
@@ -966,18 +981,55 @@
       }, 1200);
     });
 
-    // luego al abrir:
+    // BOTÓN PLAY / PAUSE
+    btnMusica.addEventListener("click", () => {
 
-    // CONTADOR DINÁMICO
+      if (musica.paused) {
+
+        musica.play().catch(() => { });
+        iconoMusica.src = "/images/pause.png";
+
+      } else {
+
+        musica.pause();
+        iconoMusica.src = "/images/play.png";
+
+      }
+
+    });
+
+    // SI CAMBIA DE PESTAÑA
+    document.addEventListener("visibilitychange", () => {
+
+      if (document.hidden) {
+
+        estabaReproduciendo = !musica.paused;
+
+        if (estabaReproduciendo) {
+          musica.pause();
+        }
+
+      } else {
+
+        if (estabaReproduciendo) {
+          musica.play().catch(() => { });
+        }
+
+      }
+
+    });
+
+    // CONTADOR
     const fecha = new Date("Dec 5, 2026 15:00:00").getTime();
 
-
     setInterval(() => {
+
       const ahora = new Date().getTime();
       const diff = fecha - ahora;
 
       if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "¡Llegó el gran día! 💍";
+        document.getElementById("countdown").innerHTML =
+          "¡Llegó el gran día! 💍";
         return;
       }
 
@@ -990,113 +1042,25 @@
       document.getElementById("horas").innerHTML = horas;
       document.getElementById("minutos").innerHTML = minutos;
       document.getElementById("segundos").innerHTML = segundos;
+
     }, 1000);
 
-    // CAMPOS DINÁMICOS
-    function cambiarCampos() {
-      const cantidad = document.getElementById("cantidad").value;
-      const contenedor = document.getElementById("campos");
-
-      contenedor.innerHTML = "";
-
-      if (cantidad == "1" || cantidad == "2") {
-        for (let i = 1; i <= cantidad; i++) {
-          contenedor.innerHTML += `
-          <input type="text" placeholder="Nombre ${i}" class="nombre"><br>
-        `;
-        }
-      }
-
-      if (cantidad >= 3) {
-        contenedor.innerHTML = `
-        <input type="text" placeholder="Familia (Apellidos)" id="familia">
-      `;
-      }
-    }
-
-    // CONFIRMAR
-    async function confirmar() {
-      const btn = document.getElementById("btnConfirmar");
-
-      // Deshabilitar botón
-      btn.disabled = true;
-      btn.innerText = "Enviando...";
-
-      const cantidad = document.getElementById("cantidad").value;
-
-      if (!cantidad) {
-        alert("Selecciona cantidad de personas");
-        btn.disabled = false;
-        btn.innerText = "Confirmar";
-        return;
-      }
-
-      let nombres = [];
-
-      if (cantidad == "1" || cantidad == "2") {
-        document.querySelectorAll(".nombre").forEach(input => {
-          if (input.value.trim() !== "") {
-            nombres.push(input.value);
-          }
-        });
-      } else {
-        const familia = document.getElementById("familia").value;
-        nombres.push("Familia " + familia);
-      }
-
-      try {
-        const response = await fetch('/api/confirmar', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ cantidad, nombres })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error("Error al guardar");
-        }
-
-        alert("Gracias por confirmar tu asistencia!");
-
-        //LIMPIAR FORMULARIO COMPLETO
-        document.getElementById("cantidad").value = "";
-
-        // eliminar todos los inputs dinámicos
-        document.getElementById("campos").innerHTML = "";
-
-        document.querySelectorAll(".nombre").forEach(input => {
-          input.value = "";
-        });
-
-      } catch (err) {
-        console.error(err);
-        alert("Hubo un error, intenta de nuevo");
-
-        //Rehabilitar botón si falla
-        btn.disabled = false;
-        btn.innerText = "Confirmar";
-        return;
-      }
-
-      btn.innerText = "Confirmado ✔";
-    }
-
     // ANIMACIÓN SCROLL
-    const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll(".section");
 
     const observer = new IntersectionObserver((entries) => {
+
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add("visible");
         } else {
-          //  se repite la animación al subir/bajar
-          entry.target.classList.remove('visible');
+          entry.target.classList.remove("visible");
         }
       });
+
     }, {
-      threshold: 0.03, // porcentaje visible antes de animar
-      rootMargin: "0px 0px -50px 0px" //suaviza el momento de activación
+      threshold: 0.03,
+      rootMargin: "0px 0px -50px 0px"
     });
 
     sections.forEach(sec => observer.observe(sec));
@@ -1108,6 +1072,7 @@
     let index = 0;
 
     function cambiarGrupo() {
+
       const imgs = [
         document.getElementById("img1"),
         document.getElementById("img2"),
@@ -1115,7 +1080,6 @@
         document.getElementById("img4")
       ];
 
-      // primero desvanecer
       imgs.forEach(img => img.style.opacity = 0);
 
       setTimeout(() => {
@@ -1123,17 +1087,16 @@
           imgs[i].src = fotos[(index + i) % fotos.length];
         }
 
-        // aparecer de nuevo
         imgs.forEach(img => img.style.opacity = 1);
 
         index = (index + 4) % fotos.length;
-      }, 600); // tiempo del fade
+
+      }, 600);
+
     }
 
-    // inicial
     cambiarGrupo();
     setInterval(cambiarGrupo, 3500);
-
   </script>
 
 </body>
